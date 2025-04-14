@@ -1,55 +1,56 @@
 // AccountTest.java
-// Creating Account objects and playing with methods defined within the Account class.
+// Inputting and outputting floating-point numbers with Account objects.
 import java.util.Scanner;
 
-public class AccountTest
-{
+public class AccountTest {
     public static void main(String[] args) {
-        // create a default Account object and assign it to account1
-        Account account1 = new Account();
-        // display the initial value of the name of account 1's owner (nobody nobody)
-        System.out.printf("Initial name is: %s%n", account1.getName());
-        // display the initial value of the balance of account 1's owner (0.0)
-        System.out.printf("Initial balance is: %s%n", account1.getBalance());
-        // display the information of account1 object by calling its toString method
-      //  account1.balance = -9.0;
-        System.out.println(account1);
+        //create an object with the default constructor and assign it to account0
+        Account account0 = new Account();
+        //display the initial values of instance variables
+        System.out.printf("The initial name is: %s%n", account0.getName());
+        System.out.printf("The initial balance is: %s%n", account0.getBalance());
+        //display the object
+        System.out.print(account0);
 
         // create a Scanner to obtain input from the command window
         Scanner input = new Scanner(System.in);
-        // prompt for reading name
-        System.out.println("Please enter the name:");
-        String theName = input.nextLine(); // read a line of text
-        account1.setName(theName); // put theName in account1
-        // display the updated information of account1 object by calling its toString method
-        System.out.println(account1);
-              /*
-            //  we could have used the following code to display per instance variable separately
-        System.out.printf("%s balance: $%.2f%n",
-                account1.getName(), account1.getBalance());
-*/
-        System.out.print("Enter deposit amount for account1: "); // prompt
-        double depositAmount = input.nextDouble(); // obtain user input
-        System.out.printf("%nadding %.2f to account1 balance%n%n",
+        System.out.println("Enter the name");//prompt
+        String theName = input.nextLine();// obtain user input
+        account0.setName(theName); //set the account owner's name to what the user specifies
+        System.out.println("Enter the deposit amount");
+        double depositAmount = input.nextDouble();  //deposit money with the amount that the user desires
+        System.out.printf("Adding %.2f to account1 balance%n", depositAmount);
+        account0.deposit(depositAmount); // add to account0's balance
+        System.out.print(account0);
+        System.out.println();
+
+        //create an object with two argument constructor and assign it to account1
+        Account account1 = new Account("Jane Green", 50.00);
+        System.out.print(account1);
+
+        System.out.print("Enter deposit amount for " + account1.getName() + ":"); // prompt
+         depositAmount = input.nextDouble(); // obtain user input
+        System.out.printf("%nadding %.2f to account1 balance%n",
                 depositAmount);
         account1.deposit(depositAmount); // add to account1's balance
-        // display the information of account1 object by calling its toString method
-        System.out.println(account1);
 
-        // create an Account object and assign it to account2
-        Account account2 = new Account("Kate Austen", 80.25);
-        // display the information of object by calling its toString method
-        System.out.println(account2);
-        // create an Account object and assign it to account3
-        Account account3 = new Account("John Lock", -7.53);
-        // display the information of object by calling toString method
-        System.out.println(account3);
-        System.out.print("Enter deposit amount for account3: "); // prompt
-        depositAmount = input.nextDouble();  // obtain user input
-        System.out.printf("%nadding %.2f to account3 balance%n%n",
+        // display account1's name and balance
+        System.out.printf("%s's balance now is: $%.2f%n",
+                account1.getName(), account1.getBalance());
+        System.out.println();
+
+        //create an object with two argument constructor and assign it to account1
+        Account account2 = new Account("John Blue", -7.53);
+        System.out.print(account2);
+
+        System.out.print("Enter deposit amount for account2: "); // prompt
+        depositAmount = input.nextDouble(); // obtain user input
+        System.out.printf("adding %.2f to account2 balance%n",
                 depositAmount);
-        account3.deposit(depositAmount); // add to account3's balance
-        // display the information of object by calling toString method
-        System.out.println(account3);
-    } // end main
-} // end class AccountTest
+        account2.deposit(depositAmount); // add to account2 balance
+
+        // display account1's name and balance
+        System.out.printf("%s's balance now is: $%.2f%n",
+                account2.getName(), account2.getBalance());
+    }
+}
